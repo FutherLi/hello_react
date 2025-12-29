@@ -1,0 +1,6 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Disallow:
+
+#robots.txt 是一个纯文本文件，放在网站根目录下（例如 https://example.com/robots.txt），用于指导搜索引擎爬虫（robot/spider） 可以或不可以抓取网站哪些部分。
+#它是 Robots Exclusion Protocol（机器人排除协议） 的核心部分。
