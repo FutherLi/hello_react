@@ -21,13 +21,29 @@ export default class App extends Component{
         //更新状态
         this.setState({todos:newTodos})
     }
+
+    //复选框选中状态改变，更新todos状态
+    updateTodo=(id,done)=>{
+        //获取todos原始状态
+        const {todos} = this.state
+        //遍历todos，找到id与当前id相同的todo，更新done值
+        const newTodoObj = todos.map((todo)=>{
+            if(todo.id === id){
+                return {...todo,done}
+            }else{
+                return todo
+            }
+        })
+        //更新状态
+        this.setState({todos:newTodoObj})
+    }
     render(){
         const {todos} = this.state
         return(
             <div className="todo-container">
                 <div className="todo-wrap">
                     <Header addTodo={this.addTodo}/>
-                    <List todos = {todos}/>
+                    <List todos = {todos} updateTodo={this.updateTodo}/>
                     <Footer/>
                 </div>
             </div>
