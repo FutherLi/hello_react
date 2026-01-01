@@ -20,6 +20,16 @@ export default class Item extends Component {
         this.props.updateTodo(id,event.target.checked)
       }
     }
+
+    //根据id删除对应todo回调
+    handleDelete=(id)=>{
+      //此处confirm为浏览器内置函数，作用是弹出一个对话框，提示用户确认某个操作是否进行，
+      // 返回值为布尔值，用户点击“确定”返回true，点击“取消”返回false
+      if(window.confirm('确定删除吗？')){
+        //调用App传过来的方法
+        this.props.deleteTodo(id)
+      }
+    }
   render() {
     //批量接受props
     const {id,name,done} = this.props
@@ -32,7 +42,7 @@ export default class Item extends Component {
                 <input type="checkbox" defaultChecked={done} onChange={this.handleCheck(id)}/>
                 <span>{name}</span>
             </label>
-            <button className="btn btn-danger" style={{display:mouse?'block':'none'}}>删除</button>
+            <button onClick={()=>this.handleDelete(id)} className="btn btn-danger" style={{display:mouse?'block':'none'}}>删除</button>
           </li>
       </div>
     )
